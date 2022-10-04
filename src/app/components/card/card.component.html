@@ -1,0 +1,72 @@
+<section
+  (mouseover)="isHovered = true"
+  (mouseleave)="isHovered = false"
+  [ngClass]="job ? 'isJob' : 'isPerson'"
+>
+  <div
+    class="flip-card-inner"
+    [ngStyle]="isHovered ? { transform: 'rotateY(360deg)' } : { transform: '' }"
+  >
+    <div class="flip-card-front" *ngIf="job; else isPerson">
+      <header>
+        <figure>
+          <img [src]="job.company.imgUrl" [alt]="job.company.name" />
+        </figure>
+        <p id="title">
+          <span> {{ job.company.name }} </span>
+        </p>
+        <p id="note">
+          <span> {{ job.company.rate }} </span>
+        </p>
+      </header>
+      <aside>
+        <p>
+          <strong>{{ job.title }}</strong>
+        </p>
+        <p>
+          <em>{{ job.salary }}</em>
+        </p>
+      </aside>
+      <footer>
+        <p>{{ job.company.city }}, {{ job.company.country }}</p>
+        <!-- <button
+          (click)="setAttributes()"
+          [ngStyle]="
+            isHovered ? { display: 'block' } : { display: 'none' }
+          "
+        > -->
+        <button
+          [ngStyle]="isHovered ? { display: 'block' } : { display: 'none' }"
+        >
+          Gooo !
+        </button>
+      </footer>
+    </div>
+
+  <ng-template #isPerson>
+    <div class="flip-card-front">
+    <header>
+      <figure>
+        <img [src]="person.imgUrl" [alt]="person.name" />
+      </figure>
+      <p id="title">
+        <span> {{ person.name }} </span>
+      </p>
+    </header>
+    <aside>
+      <p>
+        <strong>{{ person.job }}</strong>
+      </p>
+      <p>
+        <em>{{ person.experience }}</em>
+      </p>
+    </aside>
+    <footer>
+      <p>{{ person.city }}, {{ person.country }}</p>
+    </footer>
+  </div>
+  </ng-template>
+
+    <div id="flip-card-back"></div>
+  </div>
+</section>

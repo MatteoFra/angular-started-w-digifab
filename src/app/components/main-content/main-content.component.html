@@ -1,0 +1,17 @@
+<section id="jobsSection">
+  <div id="jobs" class="flexx" *ngIf="jobs.length > 0; else noJobs" >
+      <app-card *ngFor="let job of jobs" [job]="job"></app-card>
+  </div>
+  <ng-template #noJobs>
+    <p>0 job</p>
+  </ng-template>
+</section>
+
+<section id="personsSection">
+  <div id="persons" class="flexx" *ngIf="persons.length > 0; else noPersons">
+    <app-card *ngFor="let person of persons" [person]="person"></app-card>
+  </div>
+  <ng-template #noPersons>
+    <p>0 person</p>
+  </ng-template>
+</section>
