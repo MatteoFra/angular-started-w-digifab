@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ThemeService } from '../../services/theme.services';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +8,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   
-
-  @Input() theme!: boolean;
   @Input() title!: string;
+  theme! : boolean
 
-  constructor() {}
+  constructor(
+    private themeService: ThemeService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.theme = this.themeService.getTheme()
+    this.themeService.theme$.subscribe( value => this.theme = value);
+  }
 
   changeTheme() {
-    this.theme = !this.theme
+    this.themeService.toggleTheme()
   }
 }

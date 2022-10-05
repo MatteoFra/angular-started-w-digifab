@@ -1,7 +1,10 @@
-<div id="main">
+<div id="main" [ngStyle]="{
+  'color': theme ? '#000' : '#FFF',
+  'background-color': theme ? '#fff' : '#000'
+}">
   <app-side-bar-left id="sideBarLeft"></app-side-bar-left>
 
-  <app-navbar id="navbar" [theme]="theme" [title]="title"></app-navbar>
+  <app-navbar id="navbar" [title]="title"></app-navbar>
 
   <app-main-content id="main"></app-main-content>
 

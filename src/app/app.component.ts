@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from './services/theme.services';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  
   title = 'digisaas';
   theme!: boolean;
+
   ngOnInit() {
-    this.theme = !(
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    );
+    this.theme = this.themeService.getTheme()
+    this.themeService.theme$.subscribe( value => this.theme = value);
   }
+  
+  constructor(private themeService: ThemeService) {}
 }

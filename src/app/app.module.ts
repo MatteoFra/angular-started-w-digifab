@@ -9,6 +9,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SideBarLeftComponent } from './components/side-bar-left/side-bar-left.component';
 import { SideBarRightComponent } from './components/side-bar-right/side-bar-right.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SideBarRightComponent } from './components/side-bar-right/side-bar-righ
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
