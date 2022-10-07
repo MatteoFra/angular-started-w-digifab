@@ -8,12 +8,12 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin: 20px auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 10px 0;
+  margin: 0px auto;
+  overflow:auto;
+  padding: 0px 0;
 }
 #personsSection,
 #jobsSection {
-  height: 220px;
+  height: 250px;
+  border: 4px solid #fff;
 }

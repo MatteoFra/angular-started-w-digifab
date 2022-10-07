@@ -1,4 +1,4 @@
-<!-- <section id="jobsSection">
+<section id="jobsSection">
   <div id="jobs" class="flexx" *ngIf="jobs.length > 0; else noJobs" >
       <app-card *ngFor="let job of jobs; index as i" [job]="job" [index]="i"></app-card>
   </div>
@@ -14,8 +14,8 @@
   <ng-template #noPersons>
     <p>0 person</p>
   </ng-template>
-</section> -->
-<section id="jobsSection">
+</section>
+<!-- <section id="jobsSection">
   <div id="jobs" class="flexx" *ngIf="(jobs$ | async)?.length!==0; else noJobs" >
       <app-card *ngFor="let job of jobs$ | async ; index as i" [job]="job" [index]="i"></app-card>
   </div>
@@ -31,4 +31,4 @@
   <ng-template #noPersons>
     <p>0 person</p>
   </ng-template>
-</section>
+</section> -->

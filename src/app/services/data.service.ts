@@ -11,22 +11,98 @@ import { Person } from '../models/person.model';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getPersons(): Observable<Person[]> {
-    return this.http.get<Person[]>('http://localhost:3000/persons');
-  }
-  getJobs(): Observable<Job[]> {
-    return this.http.get<Job[]>('http://localhost:3000/jobs');
+  persons$: Subject<Person[]> = new BehaviorSubject<any>([]);
+  jobs$: Subject<Job[]> = new BehaviorSubject<any>([]);
+
+  getPersons() {
+    this.http
+      .get<Person[]>('http://localhost:3000/persons')
+      .subscribe((data) => {
+        this.persons$.next(data);
+        console.log('get persons');
+      });
   }
 
-  deleteData(idx: number, isPerson: boolean) {
-    if (isPerson) {
-      this.http.delete<Person[]>(`http://localhost:3000/persons/${idx}`)
-    } else {
-      this.http.delete<Job[]>(`http://localhost:3000/jobs/${idx}`).subscribe(
-        data => {
-          console.log(data)
-        }
-      )
-    }
+  getJobs() {
+    this.http.get<Job[]>('http://localhost:3000/jobs').subscribe((data) => {
+      this.jobs$.next(data);
+      console.log('get jobs');
+    });
   }
+
+  addJob(formValue: Job, id: number) {
+    this.http
+      .post<Job>('http://localhost:3000/jobs', { ...formValue, id })
+      .subscribe(() => {
+        console.log('job added');
+      });
+    setTimeout(() => {
+      console.log('Updating');
+      this.getJobs();
+    }, 200);
+  }
+
+  addPerson(formValue: Job, id: number) {
+    // console.log('add person', {... formValue, id});
+
+    this.http
+      .post<Job>('http://localhost:3000/persons', { ...formValue, id })
+      .subscribe(() => {
+        console.log('person added');
+      });
+    setTimeout(() => {
+      console.log('Updating');
+      this.getPersons();
+    }, 200);
+  }
+
+  deleteJob(idx: number) {
+    this.http
+      .delete<Job[]>(`http://localhost:3000/jobs/${idx}`)
+      .subscribe(() => {
+        console.log('job deleted');
+      });
+    setTimeout(() => {
+      console.log('Updating');
+      this.getJobs();
+    }, 200);
+  }
+
+  deletePerson(idx: number) {
+    this.http
+      .delete<Job[]>(`http://localhost:3000/persons/${idx}`)
+      .subscribe(() => {
+        console.log('person deleted');
+      });
+    setTimeout(() => {
+      console.log('Updating');
+      this.getPersons();
+    }, 200);
+  }
+
+  // getPersonsObs(): Observable<Person[]> {
+  //   return this.http.get<Person[]>('http://localhost:3000/persons');
+  // }
+  // getJobsObs(): Observable<Job[]> {
+  //   return this.http.get<Job[]>('http://localhost:3000/jobs');
+  // }
+
+  // getPersons(): Observable<Person[]> {
+  //   return this.http.get<Person[]>('http://localhost:3000/persons');
+  // }
+  // getJobs(): Observable<Job[]> {
+  //   return this.http.get<Job[]>('http://localhost:3000/jobs');
+  // }
+
+  // deleteData(idx: number, isPerson: boolean) {
+  //   if (isPerson) {
+  //     this.http.delete<Person[]>(`http://localhost:3000/persons/${idx}`).subscribe(
+  //       data => console.log(data)
+  //     )
+  //   } else {
+  //     this.http.delete<Job[]>(`http://localhost:3000/jobs/${idx}`).subscribe(
+  //       data => console.log(data)
+  //     )
+  //   }
+  // }
 }

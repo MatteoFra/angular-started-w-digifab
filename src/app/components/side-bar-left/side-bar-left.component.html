@@ -1,1 +1,109 @@
-<p>side-bar-left works!</p>
+<div class="form-card">
+  <details>
+    <summary>ADD JOB</summary>
+    
+  <form [formGroup]="jobForm">
+    <label for="title">Titre</label>
+    <br />
+    <input id="title" type="text" formControlName="title" />
+    <br />
+    <br />
+    <label for="salary">Salary</label>
+    <br />
+    <input id="salary" type="text" formControlName="salary" />
+    <br />
+    <br />
+    <div formGroupName="company">
+      <label for="name">company</label>
+      <br />
+      <input id="name" type="text" formControlName="name" />
+      <br />
+      <br />
+      <label for="city">city</label>
+      <br />
+      <input id="city" type="text" formControlName="city" />
+      <br />
+      <br />
+      <label for="country">country</label>
+      <br />
+      <input id="country" type="text" formControlName="country" />
+      <br />
+      <br />
+      <label for="imgUrl">imgUrl</label>
+      <br />
+      <input id="imgUrl" type="text" formControlName="imgUrl" />
+      <br />
+      <br />
+      <label for="rate">rate</label>
+      <br />
+      <input id="rate" type="text" formControlName="rate" />
+      <br />
+      <br />
+    </div>
+
+    <button
+      type="submit"
+      (click)="onSubmitJobForm()"
+      [disabled]="jobForm.invalid"
+    >
+      Enregistrer
+    </button>
+  </form>
+  </details>
+</div>
+<div class="form-card">
+  <details>
+    <summary>ADD PERSON</summary>
+    <form [formGroup]="personForm">
+      <label for="name">name</label>
+      <br />
+      <input id="name" type="text" formControlName="name" />
+      <br />
+      <br />
+      <label for="city">city</label>
+      <br />
+      <input id="city" type="text" formControlName="city" />
+      <br />
+      <br />
+      <label for="country">country</label>
+      <br />
+      <input id="country" type="text" formControlName="country" />
+      <br />
+      <br />
+      <label for="imgUrl">imgUrl</label>
+      <br />
+      <input id="imgUrl" type="text" formControlName="imgUrl" />
+      <br />
+      <br />
+      <button (click)="addSkill()">Add Skill</button>
+      <br />
+      <br />
+      <div
+        formArrayName="skills"
+        *ngFor="let skill of personForm.controls['skills']?.value; let i = index"
+      >
+        <ng-container [formGroupName]="i">
+          <label for="job">job</label>
+          <br />
+          <input id="job" type="text" formControlName="job" />
+          <br />
+          <br />
+          <label for="experience">experience</label>
+          <br />
+          <input id="experience" type="text" formControlName="experience" />
+          <br />
+          <br />
+          <button (click)="removeSkill(i)">X</button>
+        </ng-container>
+      </div>
+  
+      <button
+        type="submit"
+        (click)="onSubmitPersonForm()"
+        [disabled]="personForm.invalid"
+      >
+        Enregistrer
+      </button>
+    </form>
+  </details>
+</div>

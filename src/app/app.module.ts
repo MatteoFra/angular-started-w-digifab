@@ -9,7 +9,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SideBarLeftComponent } from './components/side-bar-left/side-bar-left.component';
 import { SideBarRightComponent } from './components/side-bar-right/side-bar-right.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -26,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
