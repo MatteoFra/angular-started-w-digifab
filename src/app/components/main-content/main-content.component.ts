@@ -10,32 +10,14 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./main-content.component.scss'],
 })
 export class MainContentComponent implements OnInit {
-  jobs!: Job[]
-  persons!: Person[]
 
-  // persons$!: Observable<Person[]>;
-  // jobs$!: Observable<Job[]>;
+  jobs$!: Observable<Job[]>;
+  persons$!: Observable<Person[]>;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-
-    // this.persons$ = this.dataService.getPersons()
-    // this.jobs$ = this.dataService.getJobs()
-
-    this.dataService.getJobs().subscribe(
-      item => {
-        this.jobs = item
-        console.log('jobs', item);
-      }
-    )
-    this.dataService.getPersons().subscribe(
-      item => {
-        this.persons = item
-        console.log('persons', item);
-      }
-    )
-
-  
+    this.jobs$ = this.dataService.getJobs();
+    this.persons$ = this.dataService.getPersons();
   }
 }
