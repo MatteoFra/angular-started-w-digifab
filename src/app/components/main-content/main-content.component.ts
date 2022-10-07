@@ -11,13 +11,35 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class MainContentComponent implements OnInit {
 
-  jobs$!: Observable<Job[]>;
-  persons$!: Observable<Person[]>;
+  jobs!: Job[];
+  persons!: Person[];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.jobs$ = this.dataService.getJobs();
-    this.persons$ = this.dataService.getPersons();
+    this.dataService.getJobs()
+    this.dataService.jobs$.subscribe(
+      data => {
+        this.jobs = data
+      }
+    );
+
+    this.dataService.getPersons()
+    this.dataService.persons$.subscribe(
+      data => {
+        this.persons = data
+      }
+    );
   }
+
+
+  // jobs$!: Observable<Job[]>;
+  // persons$!: Observable<Person[]>;
+
+  // constructor(private dataService: DataService) { }
+
+  // ngOnInit(): void {
+  //   this.jobs$ = this.dataService.getJobs();
+  //   this.persons$ = this.dataService.getPersons();
+  // }
 }

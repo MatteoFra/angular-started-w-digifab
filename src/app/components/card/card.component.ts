@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {}
 
   notInterested(idx: number) {
-    this.dataService.deleteData(idx, false);
+    this.dataService.deleteJob(idx);
   }
   // async setAttributes() {
   // // user inputs

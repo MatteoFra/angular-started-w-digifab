@@ -61,6 +61,18 @@
         "rate": 4
       },
       "salary": "$180,000 - $250,000"
+    },
+    {
+      "title": "Nurse",
+      "salary": "$80,000 - $100,000",
+      "company": {
+        "name": "Indeed",
+        "city": "Annemasse",
+        "country": "France",
+        "imgUrl": "https://d3fw5vlhllyvee.cloudfront.net/dist/header/ukraine_support.7ad2b5d444bc427dbc5d.png",
+        "rate": 5
+      },
+      "id": 4
     }
   ],
   "persons": [
@@ -123,6 +135,23 @@
       "city": "Genève",
       "country": "Suisse",
       "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnVPLUfe3aEhsQ9dr_77tx_DGIIRxSzZrwUMdtdcMaSk08hal2mPmXsguuRrtIWw9iaiw&usqp=CAU"
+    },
+    {
+      "name": "Jack",
+      "city": "Boston",
+      "country": "USA",
+      "skills": [
+        {
+          "job": "Plane Pilote",
+          "experience": "4 years"
+        },
+        {
+          "job": "helicopter pilot",
+          "experience": "4 years"
+        }
+      ],
+      "imgUrl": "https://st3.depositphotos.com/27063782/35602/i/600/depositphotos_356020244-stock-photo-le-mans-france-june-15.jpg",
+      "id": 5
     }
   ]
 }
