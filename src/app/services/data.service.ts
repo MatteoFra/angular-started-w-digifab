@@ -36,10 +36,12 @@ export class DataService {
       .subscribe(() => {
         console.log('job added');
       });
+
+      // delay for updating
     setTimeout(() => {
       console.log('Updating');
       this.getJobs();
-    }, 200);
+    }, 400);
   }
 
   addPerson(formValue: Job, id: number) {
@@ -50,10 +52,12 @@ export class DataService {
       .subscribe(() => {
         console.log('person added');
       });
+
+      // delay for updating
     setTimeout(() => {
       console.log('Updating');
       this.getPersons();
-    }, 200);
+    }, 400);
   }
 
   deleteJob(idx: number) {
@@ -62,10 +66,12 @@ export class DataService {
       .subscribe(() => {
         console.log('job deleted');
       });
+
+      // delay for updating
     setTimeout(() => {
       console.log('Updating');
       this.getJobs();
-    }, 200);
+    }, 400);
   }
 
   deletePerson(idx: number) {
@@ -74,10 +80,12 @@ export class DataService {
       .subscribe(() => {
         console.log('person deleted');
       });
+
+      // delay for updating
     setTimeout(() => {
       console.log('Updating');
       this.getPersons();
-    }, 200);
+    }, 400);
   }
 
   // getPersonsObs(): Observable<Person[]> {
