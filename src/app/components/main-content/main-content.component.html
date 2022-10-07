@@ -1,13 +1,13 @@
 <section id="jobsSection">
   <div id="jobs" class="flexx" *ngIf="jobs.length > 0; else noJobs" >
-      <app-card *ngFor="let job of jobs" [job]="job"></app-card>
+      <app-card *ngFor="let job of jobs; index as i" [job]="job" [index]="i"></app-card>
   </div>
   <ng-template #noJobs>
     <p>0 job</p>
   </ng-template>
 </section>
 
-<section id="personsSection">
+<section id="personsSection" *ngIf="persons">
   <div id="persons" class="flexx" *ngIf="persons.length > 0; else noPersons">
     <app-card *ngFor="let person of persons" [person]="person"></app-card>
   </div>
@@ -15,3 +15,20 @@
     <p>0 person</p>
   </ng-template>
 </section>
+<!-- <section id="jobsSection">
+  <div id="jobs" class="flexx" *ngIf="(jobs$ | async)?.length!==0; else noJobs" >
+      <app-card *ngFor="let job of jobs$ | async ; index as i" [job]="job" [index]="i"></app-card>
+  </div>
+  <ng-template #noJobs>
+    <p>0 job</p>
+  </ng-template>
+</section>
+
+<section id="personsSection" *ngIf="persons$">
+  <div id="persons" class="flexx" *ngIf="(persons$ | async)?.length==0; else noPersons">
+    <app-card *ngFor="let person of persons$ | async" [person]="person"></app-card>
+  </div>
+  <ng-template #noPersons>
+    <p>0 person</p>
+  </ng-template>
+</section> -->

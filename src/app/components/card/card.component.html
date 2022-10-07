@@ -28,44 +28,64 @@
         </p>
       </aside>
       <footer>
-        <p>{{ job.company.city }}, {{ job.company.country }}</p>
-        <!-- <button
-          (click)="setAttributes()"
-          [ngStyle]="
-            isHovered ? { display: 'block' } : { display: 'none' }
-          "
-        > -->
+        <p>
+          {{ job.company.city }}, {{ job.company.country }}
+        </p>
+        <!-- <p>
+          <button
+            [ngStyle]="isHovered ? { display: 'block' } : { display: 'none' }"
+            (click)="notInterested(index)"
+          >
+            X
+          </button>
+        </p> -->
         <button
-          [ngStyle]="isHovered ? { display: 'block' } : { display: 'none' }"
-        >
-          Gooo !
-        </button>
+        [ngStyle]="isHovered ? { display: 'block' } : { display: 'none' }"
+        (click)="notInterested(index)"
+      >
+        X
+      </button>
       </footer>
+      
+
     </div>
 
-  <ng-template #isPerson>
-    <div class="flip-card-front">
-    <header>
-      <figure>
-        <img [src]="person.imgUrl" [alt]="person.name" />
-      </figure>
-      <p id="title">
-        <span> {{ person.name }} </span>
-      </p>
-    </header>
-    <aside>
-      <p>
-        <strong>{{ person.job }}</strong>
-      </p>
-      <p>
-        <em>{{ person.experience }}</em>
-      </p>
-    </aside>
-    <footer>
-      <p>{{ person.city }}, {{ person.country }}</p>
-    </footer>
-  </div>
-  </ng-template>
+    <ng-template #isPerson>
+      <div class="flip-card-front" *ngIf="person">
+        <header>
+          <figure>
+            <img [src]="person.imgUrl" [alt]="person.name" />
+          </figure>
+          <p id="title">
+            <span> {{ person.name }} </span>
+          </p>
+        </header>
+        <aside>
+          <div
+            *ngFor="let exp of person.skills; index as i; let l = count"
+            [ngClass]="{ first: i == 0 }"
+            [ngStyle]="
+              isHovered && i == 0
+                ? {
+                    marginTop: '-' + 70 * (l - 1) + 'px',
+                    transitionDuration: 1 * l + 's'
+                  }
+                : { backgroundColor: '' }
+            "
+          >
+            <p>
+              <strong>{{ exp.job }}</strong>
+            </p>
+            <p>
+              <em>{{ exp.experience }}</em>
+            </p>
+          </div>
+        </aside>
+        <footer>
+          <p>{{ person.city }}, {{ person.country }}</p>
+        </footer>
+      </div>
+    </ng-template>
 
     <div id="flip-card-back"></div>
   </div>

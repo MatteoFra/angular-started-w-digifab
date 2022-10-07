@@ -26,13 +26,31 @@ section {
         }
       }
       aside {
-        height: 90px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        margin-top: -50px;
-        p {
-          margin: 5px;
+        height: 70px;
+        width: 70%;
+        margin-left: auto;
+        margin-top: -40px;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        div {
+          width: 100%;
+          height: 70px;
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+          align-items: end;
+          position: relative;
+          p {
+            margin: 5px;
+          }
+          &.first{
+            margin-top: 0px;
+            transition: all linear 2s;
+            transition-delay: 1s;
+            transition-timing-function: linear;
+            animation-iteration-count: infinite;
+          }
         }
       }
       footer {
@@ -49,6 +67,7 @@ section {
           position: relative;
           bottom: 10px;
           border-radius: 10px;
+          
         }
       }
     }
@@ -131,11 +150,9 @@ section {
           padding: 0px 0 0 15px;
         }
         button {
-          width: 80px;
+          width: 30px;
           height: 30px;
-          position: relative;
-          bottom: 10px;
-          border-radius: 10px;
+          border-radius: 50%;
         }
       }
     }

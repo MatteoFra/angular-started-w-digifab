@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/job.model';
 import { Person } from 'src/app/models/person.model';
+import { DataService } from '../../services/data.service';
 
 // metadata
 @Component({
@@ -11,13 +12,17 @@ import { Person } from 'src/app/models/person.model';
 export class CardComponent implements OnInit {
   @Input() job!: Job;
   @Input() person!: Person;
+  @Input() index!: number;
 
   isHovered = false;
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {}
-  
+
+  notInterested(idx: number) {
+    this.dataService.deleteData(idx, false);
+  }
   // async setAttributes() {
   // // user inputs
   // let newName = prompt('new name :');
