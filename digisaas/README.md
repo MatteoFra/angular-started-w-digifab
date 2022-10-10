@@ -1,0 +1,1 @@
+ng new digilab --skip-tests=true --routing=true --style=scss
